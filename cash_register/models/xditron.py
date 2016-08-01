@@ -9,7 +9,7 @@ class SaremaX1(CashRegister):
     """
     def __init__(self, name, connection=None):
         # initializes the CashRegister instance
-        super().__init__(name, connection)
+        super(SaremaX1, self).__init__(name, connection)
         # defines the supported commands
         self._supported_commands = [
             C.clear,
