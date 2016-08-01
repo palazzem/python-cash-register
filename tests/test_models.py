@@ -135,7 +135,7 @@ def test_base_model_add_commands():
     register._supported_commands.append(command)
     # try to use the command
     register._add_command(command)
-    assert '5.90H1R1' in register._commands
+    assert b'5.90H1R1' in register._commands
 
 def test_base_model_add_commands_with_params():
     """
@@ -153,4 +153,4 @@ def test_base_model_add_commands_with_params():
         'description': 'Potatoes'
     }
     register._add_command(command, params)
-    assert '"Potatoes"5.90H1R1' in register._commands
+    assert b'"Potatoes"5.90H1R1' in register._commands

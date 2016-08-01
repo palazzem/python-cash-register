@@ -34,6 +34,6 @@ def test_base_command_build():
         'quantity': '*1.0',
     }
     # expected result
-    expected = '"Potatoes"2.0*1.0H1R'
+    expected = b'"Potatoes"2.0*1.0H1R'
     generated = command.build(params)
     assert generated == expected

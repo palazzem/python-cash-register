@@ -39,10 +39,10 @@ class TestSaremaX1:
         # create a list of commands
         register.sell_products(products)
         assert len(register._commands) == 4
-        assert register._commands[0] == 'K'
-        assert register._commands[1] == '"Potatoes"2.0*3.0H1R'
-        assert register._commands[2] == '"Water"0.50H1R'
-        assert register._commands[3] == '1T'
+        assert register._commands[0] == b'K'
+        assert register._commands[1] == b'"Potatoes"2.0*3.0H1R'
+        assert register._commands[2] == b'"Water"0.50H1R'
+        assert register._commands[3] == b'1T'
 
     def test_sell_products_empty(self):
         """
@@ -82,9 +82,9 @@ class TestSaremaX1:
         register.sell_products(products_1)
         register.sell_products(products_2)
         assert len(register._commands) == 6
-        assert register._commands[0] == 'K'
-        assert register._commands[1] == '"Potatoes"2.0*3.0H1R'
-        assert register._commands[2] == '1T'
-        assert register._commands[3] == 'K'
-        assert register._commands[4] == '"Water"0.50H1R'
-        assert register._commands[5] == '1T'
+        assert register._commands[0] == b'K'
+        assert register._commands[1] == b'"Potatoes"2.0*3.0H1R'
+        assert register._commands[2] == b'1T'
+        assert register._commands[3] == b'K'
+        assert register._commands[4] == b'"Water"0.50H1R'
+        assert register._commands[5] == b'1T'

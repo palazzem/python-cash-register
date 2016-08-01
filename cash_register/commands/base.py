@@ -32,9 +32,13 @@ class Command(object):
         Generates a valid command string, with the given ``params`` (if any)
         """
         if params is not None:
-            return self._command_string.format(**params)
+            command = self._command_string.format(**params)
         else:
-            return self._command_string
+            command = self._command_string
+
+        # the command must be encoded as a bytearray, otherwise it
+        # could not be sent over a serial port
+        return command.encode()
 
     def __str__(self):
         """
