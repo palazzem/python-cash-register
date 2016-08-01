@@ -2,7 +2,14 @@
 python-cash-register
 ====================
 
-Python bindings for a generic cash registers, using `XON/XOFF protocol`_ for serial communication.
+.. image:: https://travis-ci.org/palazzem/python-cash-register.svg?branch=master
+    :target: https://travis-ci.org/palazzem/python-cash-register
+
+.. image:: https://codecov.io/gh/palazzem/python-cash-register/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/palazzem/python-cash-register
+
+
+Python bindings for generic cash registers, using the `XON/XOFF protocol`_ for serial communication.
 
 .. _XON/XOFF protocol: https://en.wikipedia.org/wiki/Software_flow_control
 
