@@ -46,3 +46,9 @@ class CashRegister(object):
             # close the connection
             self._connection.flush()
             self._connection.close()
+
+    def __str__(self):
+        """
+        Representation of the CashRegister object
+        """
+        return self.name
