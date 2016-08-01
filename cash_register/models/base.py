@@ -3,11 +3,13 @@ class CashRegister(object):
     The CashRegister class provides a minimal class which should
     be extended to write custom cash register implementations.
 
-    When defining a new model, the following methods must be
+    When defining a new model, the following methods **must** be
     overridden to handle validity checks required by high-level
     APIs:
-        * __init__: just call the super() and set the
+        * ``__init__``: just call the super() and set the
           _supported_commands attribute
+        * ``sell_products``: define the sequence of commands
+          required to print a recipe with the given products
     """
     def __init__(self, name, connection=None):
         self.name = name
@@ -36,6 +38,14 @@ class CashRegister(object):
         commands may cause unexpected behaviors.
         """
         return list(self._supported_commands)
+
+    def sell_products(self, products):
+        """
+        This method **must** be implemented to define the
+        right sequence of commands required to print a
+        recipe with the given products
+        """
+        raise NotImplementedError
 
     def send(self):
         """

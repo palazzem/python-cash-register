@@ -1,3 +1,5 @@
+import pytest
+
 from cash_register.models.base import CashRegister
 
 
@@ -93,3 +95,14 @@ def test_base_model_send_commands(mocker):
     assert register._connection.write.call_count == 3
     assert register._connection.flush.call_count == 1
     assert register._connection.close.call_count == 1
+
+
+def test_base_model_sell_products():
+    """
+    The sell_products method must be implemented in the child
+    class and not in the CashRegister class.
+    """
+    with pytest.raises(NotImplementedError):
+        register = CashRegister('Sarema X2')
+        products = [object()]
+        register.sell_products(products)
