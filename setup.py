@@ -22,7 +22,7 @@ LONG_DESCRIPTION = open('README.rst').read()
 setup(
     name="python-cash-register",
     version=version,
-    description="Python cash register",
+    description="A set of Python bindings to control cash registers",
     long_description=LONG_DESCRIPTION,
     classifiers=[
         "Development Status :: 4 - Beta",
