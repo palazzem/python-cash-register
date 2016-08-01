@@ -99,6 +99,20 @@ def test_base_model_send_commands(mocker):
     assert register._connection.close.call_count == 1
 
 
+def test_base_model_send_commands_flush_list(mocker):
+    """
+    Ensure that after a send() call, the commands list is empty
+    """
+    # create a CashRegister with a mocked connection
+    mocked_serial = mocker.Mock()
+    register = CashRegister('Sarema X2', connection=mocked_serial)
+    # add some commands
+    register._commands = ['K', '1H1R', '1T']
+    # send commands
+    register.send()
+    assert len(register._commands) == 0
+
+
 def test_base_model_sell_products():
     """
     The sell_products method must be implemented in the child

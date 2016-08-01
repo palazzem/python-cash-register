@@ -78,6 +78,8 @@ class CashRegister(object):
             # close the connection
             self._connection.flush()
             self._connection.close()
+            # remove sent commands from the internal list
+            self._commands = []
 
     def __str__(self):
         """
