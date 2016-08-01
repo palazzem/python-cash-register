@@ -21,6 +21,13 @@ class CashRegister(object):
         # to the cash register
         self._connection = connection
 
+    def connect(self, connection):
+        """
+        Provides the connection handler used to send commands
+        to the cash register
+        """
+        self._connection = connection
+
     def get_supported_commands(self):
         """
         Returns a new list of supported commands. The list
