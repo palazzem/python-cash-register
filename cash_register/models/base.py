@@ -3,19 +3,22 @@ class CashRegister(object):
     The CashRegister class provides a minimal class which should
     be extended to write custom cash register implementations.
 
-    When writing a new model, the following methods must be
+    When defining a new model, the following methods must be
     overridden to handle validity checks required by high-level
     APIs:
+        * __init__: just call the super() and set the
+          _supported_commands attribute
     """
-    def __init__(self, name, supported_commands=[], connection=None):
-        # supported commands should not be changed
-        # for any reasons, otherwise a wrong command may
-        # damage the cash register.
+    def __init__(self, name, connection=None):
         self.name = name
-        self._supported_commands = supported_commands
-        # list of current commands that has not been executed
-        # at the moment
+        # supported commands should not be changed
+        # for any reason, otherwise a wrong command may
+        # damage the cash register
+        self._supported_commands = []
+        # list of current commands that are not been executed
         self._commands = []
+        # store the connection object that sends commands
+        # to the cash register
         self._connection = connection
 
     def get_supported_commands(self):
@@ -34,12 +37,12 @@ class CashRegister(object):
         connection automatically.
         """
         if len(self._commands) > 0:
-            # open the connection
+            # open the connection and iterates over the
+            # _commands buffer
             self._connection.open()
-            # iterate and send commands
             for command in self._commands:
                 self._connection.write(command)
-            # force to get the data out *now*
-            self._connection.flush()
+            # force to get the data out *now* and
             # close the connection
+            self._connection.flush()
             self._connection.close()
