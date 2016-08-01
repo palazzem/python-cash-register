@@ -25,7 +25,16 @@ class Command(object):
         """
         self.name = name
         self.description = description
-        self.command_string = command_string
+        self._command_string = command_string
+
+    def build(self, params=None):
+        """
+        Generates a valid command string, with the given ``params`` (if any)
+        """
+        if params is not None:
+            return self._command_string.format(**params)
+        else:
+            return self._command_string
 
     def __str__(self):
         """
