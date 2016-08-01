@@ -9,17 +9,20 @@ Python bindings for a generic cash registers, using `XON/XOFF protocol`_ for ser
 Support
 -------
 
-Coming soon.
+If you need support, please use the `GitHub issue tracker`_.
+
+.. _GitHub issue tracker: https://github.com/palazzem/wagtail-nesting-box/issues
 
 Contributing
 ------------
 
-Coming soon.
+We love contributions, so please feel free to fix bugs, improve things, provide documentation.
+Just follow the guidelines and submit a PR.
 
 Requirements
 ------------
 
-Coming soon.
+* Python 2.7, 3.3, 3.4 and 3.5
 
 Overview
 --------
