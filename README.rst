@@ -2,6 +2,9 @@
 python-cash-register
 ====================
 
+.. image:: https://badge.fury.io/py/python-cash-register.svg
+    :target: https://badge.fury.io/py/python-cash-register
+
 .. image:: https://travis-ci.org/palazzem/python-cash-register.svg?branch=master
     :target: https://travis-ci.org/palazzem/python-cash-register
 
