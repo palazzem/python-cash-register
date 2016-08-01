@@ -1,3 +1,6 @@
+from ..exceptions import NotSupportedCommand
+
+
 class CashRegister(object):
     """
     The CashRegister class provides a minimal class which should
@@ -38,6 +41,18 @@ class CashRegister(object):
         commands may cause unexpected behaviors.
         """
         return list(self._supported_commands)
+
+    def _add_command(self, command, params=None):
+        """
+        Adds the given command to the command list. This
+        method also ensures that the command is a supported
+        command, otherwise an exception is raised.
+        """
+        if command in self._supported_commands:
+            command_string = command.build(params)
+            self._commands.append(command_string)
+        else:
+            raise NotSupportedCommand
 
     def sell_products(self, products):
         """

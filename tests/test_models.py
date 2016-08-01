@@ -1,6 +1,8 @@
 import pytest
 
+from cash_register.exceptions import NotSupportedCommand
 from cash_register.models.base import CashRegister
+from cash_register.commands.base import Command
 
 
 def test_base_model_defaults():
@@ -106,3 +108,49 @@ def test_base_model_sell_products():
         register = CashRegister('Sarema X2')
         products = [object()]
         register.sell_products(products)
+
+def test_base_model_add_commands_not_supported():
+    """
+    Ensure that a command can be added only if it's supported
+    by the given model. If the command is not supported, the
+    call must raise a NotSupportedCommand exception
+    """
+    # creates a cash register and appends an example command
+    register = CashRegister('Sarema X2')
+    command = Command('SELL', 'Sell command', '5.90H1R1')
+    # try to use the command
+    with pytest.raises(NotSupportedCommand):
+        register._add_command(command)
+
+def test_base_model_add_commands():
+    """
+    Ensure that a command can be added only if it's supported
+    by the given model. If the command is supported, the
+    call must add the formatted command to the _commands
+    attribute
+    """
+    # creates a cash register and appends an example command
+    register = CashRegister('Sarema X2')
+    command = Command('SELL', 'Sell command', '5.90H1R1')
+    register._supported_commands.append(command)
+    # try to use the command
+    register._add_command(command)
+    assert '5.90H1R1' in register._commands
+
+def test_base_model_add_commands_with_params():
+    """
+    Ensure that a command can be added only if it's supported
+    by the given model. If the command is supported, the
+    call must add the formatted command with the given params,
+    to the _commands attribute
+    """
+    # creates a cash register and appends an example command
+    register = CashRegister('Sarema X2')
+    command = Command('SELL', 'Sell command', '"{description}"5.90H1R1')
+    register._supported_commands.append(command)
+    # try to use the command
+    params = {
+        'description': 'Potatoes'
+    }
+    register._add_command(command, params)
+    assert '"Potatoes"5.90H1R1' in register._commands
