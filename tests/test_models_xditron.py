@@ -43,3 +43,48 @@ class TestSaremaX1:
         assert register._commands[1] == '"Potatoes"2.0*3.0H1R'
         assert register._commands[2] == '"Water"0.50H1R'
         assert register._commands[3] == '1T'
+
+    def test_sell_products_empty(self):
+        """
+        Ensure that the commands list is not modified if the
+        products list is empty
+        """
+        # create the register
+        register = SaremaX1('Sarema X1')
+        # define a products list
+        products = []
+        # create a list of commands
+        register.sell_products(products)
+        assert len(register._commands) == 0
+
+    def test_sell_products_multiple(self):
+        """
+        Ensure that two executions of sell_products generates two
+        different recipes
+        """
+        # create the register
+        register = SaremaX1('Sarema X1')
+        # define a products list
+        products_1 = [
+            {
+                'description': 'Potatoes',
+                'amount': '2.0',
+                'quantity': '3.0',
+            },
+        ]
+        products_2 = [
+            {
+                'description': 'Water',
+                'amount': '0.50',
+            },
+        ]
+        # create a list of commands
+        register.sell_products(products_1)
+        register.sell_products(products_2)
+        assert len(register._commands) == 6
+        assert register._commands[0] == 'K'
+        assert register._commands[1] == '"Potatoes"2.0*3.0H1R'
+        assert register._commands[2] == '1T'
+        assert register._commands[3] == 'K'
+        assert register._commands[4] == '"Water"0.50H1R'
+        assert register._commands[5] == '1T'

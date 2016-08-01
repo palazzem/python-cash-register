@@ -34,25 +34,26 @@ class SaremaX1(CashRegister):
                 'quantity': '',     # optional, (string)
             }
         """
-        # start the transaction
-        self._add_command(C.clear)
-        # iterate over products
-        for product in products:
-            params = {
-                'description': product['description'],
-                'amount': product['amount'],
-            }
+        if len(products) > 0:
+            # start the transaction
+            self._add_command(C.clear)
+            # iterate over products
+            for product in products:
+                params = {
+                    'description': product['description'],
+                    'amount': product['amount'],
+                }
 
-            quantity = product.get('quantity', '')
+                quantity = product.get('quantity', '')
 
-            # FIXME: workaround that prepends a *
-            # this should be handled in a better way otherwise
-            # we risk to make commands too specific and not reausable
-            # between different model (maybe we want that?)
-            if quantity:
-                quantity = '*{}'.format(quantity)
+                # FIXME: workaround that prepends a *
+                # this should be handled in a better way otherwise
+                # we risk to make commands too specific and not reausable
+                # between different model (maybe we want that?)
+                if quantity:
+                    quantity = '*{}'.format(quantity)
 
-            params.update({'quantity': quantity})
-            self._add_command(C.sell, params)
-        # end the transaction
-        self._add_command(C.close)
+                params.update({'quantity': quantity})
+                self._add_command(C.sell, params)
+            # end the transaction
+            self._add_command(C.close)
