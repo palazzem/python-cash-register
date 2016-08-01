@@ -26,3 +26,10 @@ class Command(object):
         self.name = name
         self.description = description
         self.command_string = command_string
+
+    def __str__(self):
+        """
+        When you're referencing the instance informal string representation, it
+        returns the command description
+        """
+        return "{} - {}".format(self.name, self.description)
