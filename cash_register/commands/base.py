@@ -1,6 +1,6 @@
-class BaseCommand(object):
+class Command(object):
     """
-    The BaseCommand class provides a minimal class which may be used
+    The base Command class provides a minimal class which may be used
     for writing custom command implementations.
 
     Note that it's not intended as a way to create categories of
