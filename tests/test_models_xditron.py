@@ -28,12 +28,12 @@ class TestSaremaX1:
         products = [
             {
                 'description': 'Potatoes',
-                'amount': '2.0',
+                'price': '2.0',
                 'quantity': '3.0',
             },
             {
                 'description': 'Water',
-                'amount': '0.50',
+                'price': '0.50',
             },
         ]
         # create a list of commands
@@ -68,14 +68,14 @@ class TestSaremaX1:
         products_1 = [
             {
                 'description': 'Potatoes',
-                'amount': '2.0',
+                'price': '2.0',
                 'quantity': '3.0',
             },
         ]
         products_2 = [
             {
                 'description': 'Water',
-                'amount': '0.50',
+                'price': '0.50',
             },
         ]
         # create a list of commands

@@ -30,7 +30,7 @@ class SaremaX1(CashRegister):
         Accepted products must have the following schema:
             {
                 'description': '',  # mandatory, (string)
-                'amount': '',       # mandatory, (string)
+                'price': '',        # mandatory, (string)
                 'quantity': '',     # optional, (string)
             }
         """
@@ -41,7 +41,7 @@ class SaremaX1(CashRegister):
             for product in products:
                 params = {
                     'description': product['description'],
-                    'amount': product['amount'],
+                    'price': product['price'],
                 }
 
                 quantity = product.get('quantity', '')

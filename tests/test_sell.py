@@ -25,7 +25,7 @@ def test_sell_command():
     # params used in the public API
     params = {
         'description': 'Potatoes',
-        'amount': '2.0',
+        'price': '2.0',
         'quantity': '*1.0',
     }
     # expected result

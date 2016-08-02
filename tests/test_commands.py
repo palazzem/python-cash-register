@@ -25,12 +25,12 @@ def test_base_command_build():
     command = Command(
         'SELL',
         'Add a record to the current recipe',
-        '"{description}"{amount}{quantity}H1R',
+        '"{description}"{price}{quantity}H1R',
     )
     # params used in the public API
     params = {
         'description': 'Potatoes',
-        'amount': '2.0',
+        'price': '2.0',
         'quantity': '*1.0',
     }
     # expected result

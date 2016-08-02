@@ -18,10 +18,10 @@ class Command(object):
         A proper example of this command could be:
             name -> 'sell'
             description -> 'this command add a record to the recipe'
-            command_string -> '"{description}"{amount}*{quantity}'
+            command_string -> '"{description}"{price}*{quantity}'
 
         So that the public API could:
-            command_string.format(description="Potatoes", amount=2.0, quantity=1.0)
+            command_string.format(description="Potatoes", price=2.0, quantity=1.0)
         """
         self.name = name
         self.description = description

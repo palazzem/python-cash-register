@@ -65,12 +65,12 @@ of the library is out:
     products = [
         {
             'description': 'Potatoes',
-            'amount': '2.0',
+            'price': '2.0',
             'quantity': '3.0',
         },
         {
             'description': 'Water',
-            'amount': '0.50',
+            'price': '0.50',
         },
     ]
 

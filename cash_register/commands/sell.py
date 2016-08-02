@@ -13,7 +13,7 @@ clear = Command(
 sell = Command(
     'SELL',
     'Add a record to the current recipe',
-    '"{description}"{amount}{quantity}H1R',
+    '"{description}"{price}{quantity}H1R',
 )
 
 close = Command(
