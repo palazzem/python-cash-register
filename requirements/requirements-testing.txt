@@ -4,8 +4,16 @@
 #
 #    pip-compile --output-file requirements-testing.txt requirements-testing.in
 #
-coverage==4.2             # via pytest-cov
-py==1.4.31                # via pytest
+coverage==4.2
+    # via pytest-cov
+py==1.10.0
+    # via pytest
 pytest-cov==2.3.0
+    # via -r requirements-testing.in
 pytest-mock==1.1
+    # via -r requirements-testing.in
 pytest==2.9.2
+    # via
+    #   -r requirements-testing.in
+    #   pytest-cov
+    #   pytest-mock
